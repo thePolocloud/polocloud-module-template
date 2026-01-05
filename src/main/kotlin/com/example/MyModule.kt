@@ -11,12 +11,14 @@ val logger: Logger = LogManager.getLogger()
 class MyModule : PolocloudModule {
 
     override fun onEnable() {
+        // Here you can add your module's initialization logic
         Agent.eventProvider().subscribe(ServiceChangeStateEvent::class.java) { event ->
             logger.info("[MyModule] Service '${event.service.name()}' changed his state to '${event.service.state}'")
         }
     }
 
     override fun onDisable() {
+        // Here you can add your module's cleanup logic
         logger.info("[MyModule] Good bye!")
     }
 
